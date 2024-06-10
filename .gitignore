@@ -166,3 +166,4 @@ uploads/
 node_modules/
 .DS_STORE
 package-lock.json
+.db
