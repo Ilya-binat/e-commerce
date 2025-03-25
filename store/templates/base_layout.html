@@ -21,7 +21,7 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="{% url 'store:home' %}">
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+                <img src="https://bulma.io/assets/images/bulma-logo.png" width="112" height="28">
             </a>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
@@ -51,7 +51,7 @@
                         <a href="{% url 'users:reset_password' %}" class="navbar-item">
                             Изменить пароль
                         </a>
-                        <a href="{% url 'store:favorite' %}" class="navbar-item">
+                        <a href="{% url 'store:favorite_page' %}" class="navbar-item">
                             Избранное
                         </a>
                         <a href="{% url 'store:orders' %}" class="navbar-item">
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 {% else %}
-                <a class="navbar-item" href="{% url 'users:sign_in' %}">
+                <a class="navbar-item" href="{% url 'users:request_code' %}">
                     <button class="button">Войти</button>
                 </a>
                 {% endif %}

@@ -9,7 +9,8 @@ urlpatterns = [
     path('store/', include(('store.urls', 'store'), namespace='store')),
     path('users/', include(('users.urls', 'users'), namespace='users')),
     path('staff/', include(('staff.urls', 'staff'), namespace='staff')),
+    path('account/', include('allauth.urls')),  # Добавляет все нужные URL для allauth
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += staticfiles_urlpatterns()
-

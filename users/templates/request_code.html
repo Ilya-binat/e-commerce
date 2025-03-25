@@ -1,0 +1,53 @@
+{% extends 'base_layout.html' %}
+{% load socialaccount %}
+
+{% block auth %}
+    <div class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-4">
+                    <div class="box">
+                        <div class="title">Авторизация</div>
+                        <form method="post">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                <div class="field">
+                                    <label class="label" for="{{ field.id_for_label }}">
+                                        {{ field.label }}
+                                    </label>
+                                    <div class="control">
+                                        {{ field }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            {% if form.errors %}
+                                <ul>
+                                    {% for error in form.errors.values %}
+                                        <li class="has-text-danger">{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                            <button class="button is-success">
+                                Ок
+                            </button>
+
+                            <div class="columns mt-4">
+                                <div class="column">
+                                    <div class="subtitle is-5">Войти через:</div>
+                                </div>
+                                <div class="column">
+                                    <div class="buttons">
+                                        <a href="{% provider_login_url 'google' %}"
+                                           class="button is-small is-rounded">
+                                            <ion-icon name="logo-google"></ion-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

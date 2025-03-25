@@ -1,0 +1,28 @@
+{% extends 'base_layout.html' %}
+
+{% block auth %}
+    <div class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-4">
+                    <div class="box">
+                        <div class="title is-5">Введите 6-значный код, отправленный на почту</div>
+                        <form method="post">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                <div class="field">
+                                    <div class="control">
+                                        {{ field }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <button class="button is-success">
+                                Ок
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -44,15 +44,13 @@
                                 </a>
                             </div>
                             <div class="column is-2">
-                                {% if user not in product.favorite.all %}
-                                <a href="{% url 'store:favorite' %}?action=favorite&product={{product.pk}}">
+                                <a href="{% url 'store:favorite' product.pk %}">
+                                    {% if user not in product.favorite.all %}
                                     <ion-icon name="heart-outline" class="order"></ion-icon>
-                                </a>
-                                {% else %}
-                                <a href="{% url 'store:favorite' %}?action=favorite&product={{product.pk}}">
+                                    {% else %}
                                     <ion-icon name="heart" class="order has-text-danger"></ion-icon>
+                                    {% endif %}
                                 </a>
-                                {% endif %}
                             </div>
                         </div>
                     </div>

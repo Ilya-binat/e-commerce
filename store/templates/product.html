@@ -53,18 +53,17 @@
                                 {{product.price}} рублей
                             </div>
                             <div class="buttons is-centered">
-                                <a class="button is-small" href="{% url 'store:guest_register' product.pk %}?pk={{ product.pk }}"> 
+                                <a class="button is-small"
+                                    href="{% url 'store:guest_register' product.pk %}?pk={{ product.pk }}">
                                     <ion-icon name="cart" class="mr-1"></ion-icon>
                                 </a>
-                                {% if user not in product.favorite.all %}
-                                <a href="{% url 'store:product' product.pk %}?action=favorite" class="button is-small">
-                                    <ion-icon name="heart-outline"></ion-icon>
+                                <a href="{% url 'store:favorite' product.pk %}" class="button is-small">
+                                    {% if user not in product.favorite.all %}
+                                    <ion-icon name="heart-outline" class="order is-size-6"></ion-icon>
+                                    {% else %}
+                                    <ion-icon name="heart" class="order has-text-danger is-size-6"></ion-icon>
+                                    {% endif %}
                                 </a>
-                                {% else %}
-                                <a href="{% url 'store:product' product.pk %}?action=favorite" class="button is-small">
-                                    <ion-icon name="heart" class="has-text-danger"></ion-icon>
-                                </a>
-                                {% endif %}
                             </div>
                         </div>
                     </div>

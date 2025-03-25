@@ -1,30 +1,23 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
-from django.contrib.auth.models import User
+from django.contrib.auth.forms import PasswordChangeForm
 from .bulma_mixin import BulmaMixin
+from .models import User
 
 
-class SignInForm(BulmaMixin, AuthenticationForm):
-    username = forms.CharField(label='Напишите никнейм')
-    password = forms.CharField(
-        widget=forms.PasswordInput(), label='Напишите пароль')
-
-    class Meta:
-        model = User
-        fields = ['username', 'password']
-
-
-class SignUpForm(BulmaMixin, UserCreationForm):
-    username = forms.CharField(label='Придумайте никнейм')
-    password1 = forms.CharField(
-        widget=forms.PasswordInput(), label='Придуймайте пароль')
-    password2 = forms.CharField(
-        widget=forms.PasswordInput(), label='Повторите пароль')
+class EmailForm(BulmaMixin, forms.Form):
     email = forms.EmailField(label='Введите адрес почты')
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['email']
+
+
+class AuthForm(BulmaMixin, forms.Form):
+    code = forms.CharField(label='Введите код')
+
+    class Meta:
+        model = User
+        fields = ['code']
 
 
 class EditProfileForm(BulmaMixin, forms.ModelForm):
