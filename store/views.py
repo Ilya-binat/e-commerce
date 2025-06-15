@@ -246,3 +246,7 @@ def order_edit(request, pk):
         form.save()
         return redirect("store:orders")
     return render(request, "order_edit.html", {"form": form})
+
+def hello_world(request):
+    return render(request, "hello_world.html")
+
